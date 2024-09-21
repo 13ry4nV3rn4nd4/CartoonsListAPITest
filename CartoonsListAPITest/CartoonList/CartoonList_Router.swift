@@ -23,7 +23,7 @@ class CartoonList_Router: CartoonList_Router_Protocol {
         let router = CartoonList_Router()
         let view = CartoonListViewController()
         let presenter = CartoonList_Presenter()
-        var interactor = CartoonList_Interactor()
+        let interactor = CartoonList_Interactor()
         
         view.presenter = presenter
         
@@ -38,6 +38,10 @@ class CartoonList_Router: CartoonList_Router_Protocol {
     }
     
     func gotoDetailView(cartoon: Cartoon) {
+        let detailRouter = CartoonDetail_Router.createCartoonDetail(with: cartoon)
+        guard let detailView = detailRouter.entry else { return }
+        guard let viewController = self.entry else { return }
         
+        viewController.navigationController?.pushViewController(detailView, animated: true)
     }
 }

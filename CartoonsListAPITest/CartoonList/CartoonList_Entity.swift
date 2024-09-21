@@ -12,7 +12,7 @@ struct Cartoon: Decodable {
     let year: Int
     let creator: [String]
     let rating: String
-    let genres: [String]
+    let genre: [String]
     let runtime_in_minutes: Int
     let episodes: Int
     let image: String

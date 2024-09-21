@@ -32,6 +32,12 @@ class CartoonListViewController: UIViewController, CartoonList_View_Protocol {
         layout()
         presenter?.viewDidLoad()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if let selectedIndex = tableView.indexPathForSelectedRow {
+            tableView.deselectRow(at: selectedIndex, animated: true)
+        }
+    }
 }
 
 extension CartoonListViewController {
@@ -95,7 +101,7 @@ extension CartoonListViewController {
 // MARK: - UITableViewDelegate
 extension CartoonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        presenter?.tapOnDetail(cartoons[indexPath.row])
     }
 }
 

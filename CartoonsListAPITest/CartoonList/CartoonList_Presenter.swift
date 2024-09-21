@@ -34,12 +34,13 @@ class CartoonList_Presenter: CartoonList_Presenter_Protocol {
         case .success(let cartoons):
             view?.update(with: cartoons)
         case .failure(let error):
+            print(error)
             view?.update(with: "Try again later...")
         }
     }
     
     func tapOnDetail(_ cartoon: Cartoon) {
-        
+        router?.gotoDetailView(cartoon: cartoon)
     }
     
 }

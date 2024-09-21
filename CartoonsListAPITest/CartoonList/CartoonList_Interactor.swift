@@ -19,7 +19,7 @@ class CartoonList_Interactor: CartoonList_Interactor_Protocol {
     
     func getCartoonsListData() {
         
-        guard let url = URL(string: "https://sample-api-nine.vercel.app/cartoons2D.json") else { return }
+        guard let url = URL(string: "https://api.sampleapis.com/cartoons/cartoons2D") else { return }
         let task = URLSession.shared.dataTask(with: url) { [weak self] data, response, error in
             guard let data = data, error == nil else {
                 self?.presenter?.interactorWithData(result: .failure(NetworkError.serverError))
